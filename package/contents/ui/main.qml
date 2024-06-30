@@ -25,7 +25,7 @@ Item
             const word = API.random_word();
             const word_information = API.define_word(word);
 
-            word_label.text = "<h1 style=\"font-size:15px;\">GF" + word + "</h1>" 
+            word_label.text = "<h1 style=\"font-size:15px;\">" + word + "</h1>" 
                 + "<p style=\"font-style:italic;\">" + word_information["meanings"][0]["partOfSpeech"] + "</p>"
                 + "<p>" + word_information["meanings"][0]["definitions"][0]["definition"] + "</p>";
         }
