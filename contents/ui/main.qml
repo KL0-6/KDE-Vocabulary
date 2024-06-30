@@ -9,57 +9,33 @@ import "../api/api.js" as API
 
 Item 
 {
-    Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
+    Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation;
 
     Plasmoid.fullRepresentation: Item 
     {
-        Layout.minimumWidth: layout.implicitWidth
-        Layout.minimumHeight: layout.implicitHeight
-        Layout.preferredWidth: layout.implicitWidth * 1.2;
-        Layout.preferredHeight: layout.implicitHeight * 2;
+        Layout.minimumWidth: word_label.implicitWidth;
+        Layout.minimumHeight: word_label.implicitHeight;
+        Layout.preferredWidth: word_label.implicitWidth;
+        Layout.preferredHeight: word_label.implicitHeight;
 
         function generate_word()
         {
             const word = API.random_word();
             const word_information = API.define_word(word);
 
-            word_label.text = word;
-            word_definition.text = word_information[0]["definitions"][0]["definition"];
+            console.log(word_information["meanings"][0]["definitions"][0]["definition"]);
+
+            word_label.text = "<h1 style=\"font-size:15px;\">" + word + "</h1>" 
+                + "<p style=\"font-style:italic;\">" + word_information["meanings"][0]["partOfSpeech"] + "</p>"
+                + "<p>" + word_information["meanings"][0]["definitions"][0]["definition"] + "</p>";
         }
 
-        ColumnLayout
+        PlasmaComponents.Label 
         {
-            id: layout;
-            anchors.fill: parent
-            spacing: 1
-
-            PlasmaExtras.Heading 
-            { 
-                id: title;
-                text: "Word of the day"; 
-                horizontalAlignment: Text.AlignHCenter
-            }
-
-            PlasmaComponents.Label 
-            {
-                id: word_label
-                text: {
-                    "placeholder";
-                }
-                maximumLineCount: 1
-                horizontalAlignment: Text.AlignHCenter
-            }
-
-            PlasmaComponents.Label 
-            {
-                id: word_definition
-                text: {
-                    "placeholder";
-                }
-                horizontalAlignment: Text.AlignHCenter
-            }
-
-
+            id: word_label;
+            anchors.fill: parent;
+            textFormat: Text.RichText;
+            text: { "placeholder"; }
             Component.onCompleted: generate_word();
         }
     }

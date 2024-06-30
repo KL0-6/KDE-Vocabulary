@@ -28,7 +28,7 @@ function define_word(word)
 
         if(data[0] && data[0]["meanings"])
         {
-            return data[0]["meanings"];
+            return data[0];
         }
 
         return data[0];
