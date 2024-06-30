@@ -1,0 +1,17 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "KL0-6"
+            }
+        ],
+        "Category": "Education",
+        "Description": "Improve your vocabulary with a random word!",
+        "Id": "com.github.KLO-6.kde-vocabulary",
+        "Name": "Random Word",
+        "Version": "1.0",
+        "Website": "https://github.com/KL0-6/KDE-Vocabulary"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "KPackageStructure": "Plasma/Applet"
+}
